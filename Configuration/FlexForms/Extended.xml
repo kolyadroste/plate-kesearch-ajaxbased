@@ -1,0 +1,34 @@
+<additional>
+    <ROOT>
+        <TCEforms>
+            <sheetTitle>Ajax Definitions</sheetTitle>
+        </TCEforms>
+        <type>array</type>
+        <el>
+            <resultId>
+                <TCEforms>
+                    <label>Result ID</label>
+                    <config>
+                        <type>input</type>
+                    </config>
+                </TCEforms>
+            </resultId>
+            <filterId>
+                <TCEforms>
+                    <label>Filter ID</label>
+                    <config>
+                        <type>input</type>
+                    </config>
+                </TCEforms>
+            </filterId>
+            <targetId>
+                <TCEforms>
+                    <label>Target ID (full String)</label>
+                    <config>
+                        <type>input</type>
+                    </config>
+                </TCEforms>
+            </targetId>
+        </el>
+    </ROOT>
+</additional>

@@ -1,0 +1,33 @@
+{
+    "name": "atomicplan/plate-kesearch-ajaxbased",
+    "version": "0.5.0",
+    "type": "typo3-cms-extension",
+    "description": "a template stack that provides layouts for keSearch and Ajax based search results",
+    "authors": [
+        {
+            "name": "Kolya von Droste zu Vischering",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "tpwd/ke_search": "^5.0",
+        "atomicplan/plate-atomic-assets": "^0.5",
+        "atomicplan/plate-partials": "^0.5"
+    },
+    "require-dev": {},
+    "extra": {
+        "typo3/cms": {
+            "cms-package-dir": "{$vendor-dir}/typo3/cms",
+            "web-dir": ".Build/Web",
+            "extension-key": "plate_kesearch_ajaxbased"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "AtomicPlan\\PlateKesearchAjaxbased\\": "Classes"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

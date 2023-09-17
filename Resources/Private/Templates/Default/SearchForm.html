@@ -1,0 +1,75 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+	  xmlns:kesearch="http://typo3.org/ns/Tpwd\KeSearch\ViewHelpers"
+	  data-namespace-typo3-fluid="true">
+
+<f:layout name="General" />
+<!--
+=====================
+Templates/SearchForm.html
+-->
+<f:section name="content">
+    <style>
+        .filterTree ul.filterTree{
+            padding:0;
+        }
+        #kesearch_filters .list{border:none;}
+        #kesearch_filters .list span.head{font-weight:bold; color:red; border:none;}
+        #kesearch_filters .list ul {list-style-type: none;}
+    </style>
+	<f:asset.script identifier="atomic-ajax-form" type="module" src="EXT:plate_atomic_assets/Resources/Public/Webcomponents/Dist/atomic-ajax-form.js" priority="1"/>
+	<atomic-ajax-form action="form" resultSelector="#{conf.targetId}" callback="document.callbackFunc" delay="10" loaderSelector="#loader{conf.resultPage}" loaderAttribute="open">
+	    <form method="get" id="form_kesearch_pi1" name="form_kesearch_pi1"  action="{f:uri.page(pageUid: targetpage,additionalParams:'{type:\'1671032126\',resultId:\'{conf.resultId}\',filterId:\'{conf.filterId}\'}')}">
+			<f:comment><!-- Replace the URL with the speaking URL --></f:comment>
+			<f:if condition="{isEmptySearch} == FALSE">
+				<f:format.raw><script>history.replaceState(null,'','</f:format.raw><kesearch:link keepPiVars="1" uriOnly="1" /><f:format.raw>');</script></f:format.raw>
+			</f:if>
+
+			<fieldset class="kesearch_searchbox">
+				<div class="a-margin-bottom">
+					<f:if condition="{lparam}">
+						<input type="hidden" name="L" value="{lparam}" />
+					</f:if>
+					<f:if condition="{mpparam}">
+						<input type="hidden" name="MP" value="{mpparam}" />
+					</f:if>
+					<f:if condition="{typeparam}">
+						<input type="hidden" name="type" value="{typeparam}" />
+					</f:if>
+
+					<div class="kesearchbox margin-bottom -large">
+						<input type="search" id="ke_search_sword" name="tx_kesearch_pi1[sword]" value="{searchword -> f:format.raw()}" placeholder="{searchwordDefault}" {f:if(condition: '{extConf.allowEmptySearch} == 0', then: 'required')} minlength="{extConf.searchWordLength}" />
+					</div>
+
+
+					<f:if condition="{page}">
+						<input id="kesearchpagenumber" type="hidden" name="tx_kesearch_pi1[page]" value="{page}" />
+					</f:if>
+					<input id="resetFilters" type="hidden" name="tx_kesearch_pi1[resetFilters]" value="0" />
+					<f:if condition="{sortByField}">
+						<input id="sortByField" type="hidden" name="tx_kesearch_pi1[sortByField]" value="{sortByField}" />
+					</f:if>
+					<f:if condition="{sortByDir}">
+						<input id="sortByDir" type="hidden" name="tx_kesearch_pi1[sortByDir]" value="{sortByDir}" />
+					</f:if>
+
+					<f:if condition="{filters}">
+						<div id="kesearch_filters"><f:render partial="Filters" arguments="{conf: conf, numberofresults: numberofresults, resultrows: resultrows, filters: filters}" /></div>
+					</f:if>
+
+				</div>
+
+				<div class="a-flex a-margin-bottom">
+					<a href="{resetUrl}" class="resetButton">
+						<span><f:translate key="LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xml:reset_button" /></span>
+					</a>
+					<f:comment>
+						<a href="{resetUrl}" class="resetButton">
+							<span><f:translate key="LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xml:reset_button" /></span>
+						</a>
+					</f:comment>
+					<div class="submitbutt"><input type="submit" class="button -bordered" value="{f:translate(key: 'LLL:EXT:ke_search/Resources/Private/Language/locallang_searchbox.xml:submit')}" /></div>
+				</div>
+			</fieldset>
+		</form>
+    </atomic-ajax-form>
+</f:section>

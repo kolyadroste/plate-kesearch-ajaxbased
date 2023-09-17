@@ -1,0 +1,89 @@
+// immo search
+plugin.tx_kesearch_pi1 {
+    view {
+        templateRootPaths {
+            0 = EXT:ke_search/Resources/Private/Templates/
+            2 = EXT:plate_kesearch_ajaxbased/Resources/Private/Templates/Default/
+        }
+        partialRootPaths {
+            0 = EXT:plate_default/Resources/Private/Partials/
+            10 = EXT:ke_search/Resources/Private/Partials/
+            20 = EXT:plate_kesearch_ajaxbased/Resources/Private/Partials/Default/
+        }
+        layoutRootPaths {
+            0 = EXT:ke_search/Resources/Private/Layouts/
+            10 = EXT:plate_kesearch_ajaxbased/Resources/Private/Layouts/
+        }
+    }
+    cssFile =
+}
+// immo search
+plugin.tx_kesearch_pi3 {
+    view {
+        templateRootPaths {
+            0 = EXT:ke_search/Resources/Private/Templates/
+            2 = EXT:plate_kesearch_ajaxbased/Resources/Private/Templates/Default/
+        }
+        partialRootPaths {
+            0 = EXT:plate_default/Resources/Private/Partials/
+            10 = EXT:ke_search/Resources/Private/Partials/
+            20 = EXT:plate_kesearch_ajaxbased/Resources/Private/Partials/Default/
+        }
+        layoutRootPaths {
+            0 = EXT:ke_search/Resources/Private/Layouts/
+            10 = EXT:plate_kesearch_ajaxbased/Resources/Private/Layouts/
+        }
+    }
+    cssFile =
+}
+
+plugin.tx_kesearch_pi2 {
+    view {
+        templateRootPaths {
+            0 = EXT:ke_search/Resources/Private/Templates/
+            2 = EXT:plate_kesearch_ajaxbased/Resources/Private/Templates/Default/
+        }
+        partialRootPaths {
+            0 = EXT:plate_default/Resources/Private/Partials/
+            10 = EXT:ke_search/Resources/Private/Partials/
+            20 = EXT:plate_kesearch_ajaxbased/Resources/Private/Partials/Default/
+        }
+        layoutRootPaths {
+            0 = EXT:ke_search/Resources/Private/Layouts/
+            10 = EXT:plate_kesearch_ajaxbased/Resources/Private/Layouts/
+        }
+    }
+    cssFile =
+}
+
+lib.getContentElement= CONTENT
+lib.getContentElement.table = tt_content
+lib.getContentElement.select {
+    pidInList.data = field:pid
+    uidInList.data = field:uid
+    uidInList = 173
+}
+
+filtersAndResult = PAGE
+filtersAndResult.typeNum = 1671032126
+filtersAndResult {
+    config.disableAllHeaderCode = 1
+    config.disableBodyTag = 1
+    10 = FLUIDTEMPLATE
+    10 {
+        templateName = AjaxFilterAndResult70-30
+        templateRootPaths {
+            20 = EXT:plate_kesearch_ajaxbased/Resources/Private/Templates/Page/
+        }
+        variables {
+            filterId = TEXT
+            filterId.data= GP:filterId
+            resultId = TEXT
+            resultId.data= GP:resultId
+            test1 = TEXT
+            test1.value = TSFE:id
+        }
+    }
+}
+
+
